@@ -1,0 +1,32 @@
+import { useState } from "react";
+import axios from "axios";
+
+export default function Usuarios() {
+  const [form, setForm] = useState({ nome: "", email: "", senha: "" });
+
+  const handleChange = e => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:5000/api/usuarios", form);
+      alert(res.data.mensagem);
+    } catch (err) {
+      alert("Erro ao cadastrar usuário.");
+    }
+  };
+
+  return (
+    <div>
+      <h1>Cadastrar Usuário</h1>
+      <form onSubmit={handleSubmit}>
+        <input name="nome" placeholder="Nome" onChange={handleChange} /><br />
+        <input name="email" placeholder="Email" onChange={handleChange} /><br />
+        <input name="senha" type="password" placeholder="Senha" onChange={handleChange} /><br />
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  );
+}
