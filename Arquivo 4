@@ -1,0 +1,15 @@
+import { Link } from "react-router-dom";
+
+export default function Sidebar() {
+  return (
+    <div style={{ width: 200, background: "#f0f0f0", padding: 20 }}>
+      <h2>Menu</h2>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/usuarios">Usuários</Link></li>
+        <li><Link to="/clientes">Clientes</Link></li>
+        <li><Link to="/produtos">Produtos</Link></li>
+      </ul>
+    </div>
+  );
+}
